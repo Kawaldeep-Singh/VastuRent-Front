@@ -47,6 +47,7 @@ const COLS = [
 const ADD_FIELDS = [
   { name: 'ownerName',       label: 'Name',              type: 'text',     placeholder: 'Owner name' },
   { name: 'ownerContact',    label: 'Phone',             type: 'text',     placeholder: '+91 99999 11111' },
+  { name: 'availability',    label: 'Status',            type: 'select',   options: ['Available', 'Rented'] },
   { name: 'furnishing',      label: 'Furnishing Status', type: 'select',   options: ['Fully Furnished','Semi Furnished','Unfurnished','Raw'] },
   { name: 'bhk',             label: 'BHK',               type: 'select',   options: ['1 RK','1','2','3','4','5'] },
   { name: 'rent',            label: 'Rent',              type: 'number',   placeholder: '16500', required: true },
@@ -56,7 +57,7 @@ const ADD_FIELDS = [
   { name: 'additionalNotes', label: 'Remarks',           type: 'textarea', placeholder: 'Keys, family/bachelor, facing...' },
 ];
 
-const EMPTY_FORM = { ownerName:'', ownerContact:'', furnishing:'Semi Furnished', bhk:'2', rent:'', propertyName:'', projectName:'', sector:'', additionalNotes:'' };
+const EMPTY_FORM = { ownerName:'', ownerContact:'', availability:'Available', furnishing:'Semi Furnished', bhk:'2', rent:'', propertyName:'', projectName:'', sector:'', additionalNotes:'' };
 
 /* ── inline style objects ─────────────────────────────────────── */
 const TH = {
@@ -169,6 +170,7 @@ export default function Inventory() {
       projectName:     p.projectName     || '',
       sector:          p.sector          || '',
       additionalNotes: p.additionalNotes || '',
+      availability:    p.availability    || 'Available',
     });
     setError(''); setSubmitOk('');
   };
